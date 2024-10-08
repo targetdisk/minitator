@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="asciinema-player.css" />
+</head>
+<body>
+  <!-- Timestamp goes in here! -->
+  <div id="controls">
+    <label for="open">Open an Asciinema file:</label>
+    <input type="file" id="openbutton" />
+  </div>
+
+  <!-- Asciinema embedded Player goes in "player" div. -->
+  <div id="player"></div>
+
+  <script src="asciinema-player.min.js"></script>
+  <script src="stupidPromises.js"></script>
+  <script>
+    var player = null;
+    var file = null;
+
+    var open_button = document.getElementById("openbutton");
+
+    open_button.onchange = e => {
+      file = e.target.files[0];
+      console.log("woag")
+      player = mk_player(file);
+    }
+
+  </script>
+</body>
+</html>
