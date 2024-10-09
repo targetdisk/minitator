@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+: '
+  * Headdy
+  *
+  * Makes Librecode Asciinema files pretty for editing.
+  '
+
+outdir=$(dirname "$1")'/annotated'
+mkdir -p "$outdir"
+outfile="$outdir/$(basename "$1").annotated.head.json"
+
+head -n1 "$1" | json_pp > "$outfile"
