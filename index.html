@@ -4,29 +4,55 @@
   <link rel="stylesheet" type="text/css" href="asciinema-player.css" />
 </head>
 <body>
-  <!-- Timestamp goes in here! -->
-  <div id="controls">
-    <label for="open">Open an Asciinema file:</label>
+  <div id="refresh-note">
+    <label for="openbutton">Open an Asciinema file:</label>
     <input type="file" id="openbutton" />
   </div>
 
   <!-- Asciinema embedded Player goes in "player" div. -->
   <div id="player"></div>
 
+  <div id="controls">
+    <table>
+      <thead>
+        <tr>
+          <th scope="column">Timestamp</th>
+          <th scope="column">Input</th>
+          <th scope="column">Go To...</th>
+          <th scope="column"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- Timestamp goes in here! -->
+          <td id="time-td"></td>
+          <td id="input-td"></td>
+          <td>
+            <input type="text" id="goto-text" size="15" />
+          </td>
+          <td>
+            <input type="button" id="goto-button" value="Go" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <script src="asciinema-player.min.js"></script>
   <script src="stupidPromises.js"></script>
   <script>
-    var player = null;
     var file = null;
-
-    var open_button = document.getElementById("openbutton");
+    const open_button = document.getElementById("openbutton");
 
     open_button.onchange = e => {
+      document.getElementById("refresh-note").innerHTML =
+        "<small>Refresh page to load a new file.</small>";
+
       file = e.target.files[0];
       console.log("woag")
-      player = mk_player(file);
+      mk_player(file);
     }
-
   </script>
+
 </body>
 </html>

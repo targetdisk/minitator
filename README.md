@@ -12,8 +12,8 @@ me through annotating Asciinema sessions in Vim.
 3. PROFIT!!!!
 
 ## TODO
-- [] Add timestamp element to HTML/JS that displays the raw Asciinema timestamp
-     value.
-- [] Vim macros to make my life *really* easy.
+- [x] Add timestamp element to HTML/JS that displays the raw Asciinema
+      timestamp value.
+- [ ] Vim macros to make my life *really* easy.
 
 More docs soon...
