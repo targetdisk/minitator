@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="asciinema-player.css" />
+  <title id="doc-title">Minitator</title>
 </head>
 <body>
   <div id="refresh-note">
@@ -49,7 +50,10 @@
         "<small>Refresh page to load a new file.</small>";
 
       file = e.target.files[0];
-      console.log("woag")
+
+      document.getElementById("doc-title").innerHTML = file.name + " - Minitator";
+      console.log("loaded " + file.name);
+
       mk_player(file);
     }
   </script>
