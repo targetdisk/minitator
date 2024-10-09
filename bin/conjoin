@@ -12,3 +12,6 @@ out_name="$outdir/$og_name.annotated"
 
 json_xs -f json -t json < "$1" > "$out_name"
 tail -n+2 "$outdir/../$og_name" >> "$out_name"
+
+# For Vim.
+echo "$out_name"

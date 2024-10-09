@@ -11,3 +11,6 @@ mkdir -p "$outdir"
 outfile="$outdir/$(basename "$1").annotated.head.json"
 
 head -n1 "$1" | json_pp > "$outfile"
+
+# For Vim.
+echo "$outfile"
