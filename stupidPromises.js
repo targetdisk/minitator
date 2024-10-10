@@ -1,3 +1,7 @@
+/* Adapted from LibreCode Annotator "read_as_text" TypeScript
+ *
+ * (as written in 250d717:src/pages/index.vue:369 in the "from-students" branch)
+ */
 async function read_as_text(file) {
 
   // Create a FileReader instance
