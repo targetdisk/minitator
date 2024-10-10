@@ -11,9 +11,27 @@ me through annotating Asciinema sessions in Vim.
 
 3. PROFIT!!!!
 
-## TODO
-- [x] Add timestamp element to HTML/JS that displays the raw Asciinema
-      timestamp value.
-- [ ] Vim macros to make my life *really* easy.
+## Bonus: Vim Macros!
+### Step 1: Register plugin in your vimrc
+Add the following lines to your `~/.vimrc`:
 
-More docs soon...
+* For Vundle:
+```vim
+" My Librecode helpers
+Plugin 'targetdisk/minitator'
+au BufRead,BufNewFile *.annotated.head.json call minitator#macros()
+```
+
+* For Vim plug:
+```vim
+" My Librecode helpers
+Plug 'targetdisk/minitator'
+au BufRead,BufNewFile *.annotated.head.json call minitator#macros()
+```
+
+### Step 2: Install the plugin
+Run the `:VundleInstall` command or the `:PlugInstall` command (for Vundle or
+Vim Plug, respectively).
+
+### Step 3: PROFIT!
+There is no step three!!!
