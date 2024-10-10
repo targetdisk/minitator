@@ -1,5 +1,9 @@
 let s:bindir = expand('<sfile>:p:h:h') . '/bin/'
 
+function minitator#fourspace()
+    set expandtab tabstop=4 shiftwidth=4
+endfunction
+
 function minitator#headdy()
   let l:exe = s:bindir . 'headdy'
 
@@ -31,6 +35,8 @@ function minitator#conjoin()
 endfunction
 
 function minitator#macros()
+  call minitator#fourspace()
+
   let @b = 'o"librecode_annotations" : {"note": "€PSlibrecode annotations",[201~"version": 1,"layr€kbers"::€kb [{"anno5t€kb€kbtations": []}]},€ý5'
   let @l = 'A,{"annotations": []}€ý5'
   let @t = 'A,"title": ""€ý5'
