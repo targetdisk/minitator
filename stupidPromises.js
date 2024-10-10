@@ -36,37 +36,42 @@ async function read_as_text(file) {
   return '';
 }
 
+function update_timestamps(time) {
+    document.getElementById('time-td').innerHTML = `${time}`;
+    document.getElementById('ms-td').innerHTML = `${time * 1000}`;
+}
+
 async function mk_player(file) {
   const data = await read_as_text(file);
   const player = AsciinemaPlayer.create({data}, document.getElementById('player'));
 
   player.addEventListener('marker', ({ index, time, label }) => {
-    document.getElementById('time-td').innerHTML = `${time}`;
+    update_timestamps(time);
   });
 
   player.addEventListener('pause', () => {
-    document.getElementById('time-td').innerHTML = `${player.getCurrentTime()}`;
+    update_timestamps(player.getCurrentTime());
   });
 
   player.addEventListener('play', () => {
-    document.getElementById('time-td').innerHTML = `${player.getCurrentTime()}`;
+    update_timestamps(player.getCurrentTime());
   });
 
   player.addEventListener('playing', () => {
-    document.getElementById('time-td').innerHTML = `${player.getCurrentTime()}`;
+    update_timestamps(player.getCurrentTime());
   });
 
   player.addEventListener('ended', () => {
-    document.getElementById('time-td').innerHTML = `${player.getDuration()}`;
+    update_timestamps(player.getDuration());
   });
 
   player.addEventListener('input', ({data}) => {
-    document.getElementById('time-td').innerHTML = `${player.getCurrentTime()}`;
+    update_timestamps(player.getCurrentTime());
     document.getElementById('input-td').innerHTML = `${data[0]}`;
   });
 
   addEventListener('keydown', () => {
-    document.getElementById('time-td').innerHTML = `${player.getCurrentTime()}`;
+    update_timestamps(player.getCurrentTime());
   });
 
   const goto_text = document.getElementById("goto-text");
