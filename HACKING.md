@@ -41,3 +41,7 @@ If you want to open an instance of the Minitator web UI, you can run:
 ```
 $ make ui
 ```
+
+## SEE ALSO
+* [The Asciinema player NPM page](https://www.npmjs.com/package/asciinema-player)
+* [Asciinema's "Quick start" guide](https://docs.asciinema.org/manual/player/quick-start/)
