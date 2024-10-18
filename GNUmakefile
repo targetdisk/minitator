@@ -59,3 +59,9 @@ HACKING.html: HACKING.md pandoc.css
 
 HACKING: HACKING.html
 	$(OPEN) $<
+
+%HOWTO.html: %HOWTO.md pandoc.css
+	pandoc $< -s -c pandoc.css -o $@
+
+%HOWTO: %HOWTO.html
+	$(OPEN) $<
