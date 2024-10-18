@@ -14,6 +14,8 @@ function minitator#headdy()
   endfor
   if v:shell_error == 0
     echom "headdy: success"
+
+    execute 'vsplit ' . l:cmdout[-1]
   else
     echom "headdy: failed with code" v:shell_error
   endif
@@ -29,6 +31,8 @@ function minitator#conjoin()
   endfor
   if v:shell_error == 0
     echom "conjoin: success"
+
+    execute 'vsplit ' . l:cmdout[-1]
   else
     echom "conjoin: failed with code" v:shell_error
   endif
