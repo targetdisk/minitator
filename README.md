@@ -13,3 +13,6 @@ me through annotating Asciinema sessions in my favorite text editor.
 
 3. Install the Minitator plugin in your favorite editor:
   - For Vim/Neovim users: see [this guide](VimHOWTO.md).
+
+See [this document](PlayerHOWTO.md) for more information on using the Minitator
+web player UI.
