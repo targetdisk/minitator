@@ -10,7 +10,7 @@ outdir=$(dirname "$1")
 og_name=$(basename "$1" '.annotated.head.json')
 out_name="$outdir/$og_name.annotated"
 
-json_xs -f json -t json < "$1" > "$out_name"
+sed 's/^\s\+//g' < "$1" | tr '\n' ' ' | sed 's/\s\+$//' > "$out_name"
 tail -n+2 "$outdir/../$og_name" >> "$out_name"
 
 # For Vim.
