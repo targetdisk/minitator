@@ -41,5 +41,5 @@ function minitator#macros()
   let @l = 'A,{"annotations": []}€ý5'
   let @t = 'A,"title": ""€ý5'
   let @a = 'o{"beginning": ,"end": ,"text": ""}€ý5'
-  let @s = 'A,{"beginning": ,"end": ,"text": ""}€ý5'
+  let @s = 'A,{"beginning": ,"end": ,"text": ""}€ý5'
 endfunction
