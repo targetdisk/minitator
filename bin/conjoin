@@ -11,6 +11,7 @@ og_name=$(basename "$1" '.annotated.head.json')
 out_name="$outdir/$og_name.annotated"
 
 sed 's/^\s\+//g' < "$1" | tr '\n' ' ' | sed 's/\s\+$//' > "$out_name"
+echo >> "$out_name"
 tail -n+2 "$outdir/../$og_name" >> "$out_name"
 
 # For Vim.
