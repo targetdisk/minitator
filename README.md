@@ -1,6 +1,6 @@
 ## What is this?
 Possibly the silliest thing I have ever created...  I needed something to power
-me through annotating Asciinema sessions in Vim.
+me through annotating Asciinema sessions in my favorite text editor.
 
 ![Minitator's web UI viewing a shell session running the Minitator Vim plugin](https://sqt.wtf/~targetdisk/blob/minitator-yo-dawg.png)
 
@@ -11,29 +11,5 @@ me through annotating Asciinema sessions in Vim.
 
 2. `xdg-open index.html` (or `open index.html` if you're on a Mac).
 
-3. PROFIT!!!!
-
-## Bonus: Vim Macros!
-### Step 1: Register plugin in your vimrc
-Add the following lines to your `~/.vimrc`:
-
-* For Vundle:
-```vim
-" My Librecode helpers
-Plugin 'targetdisk/minitator'
-au BufRead,BufNewFile *.annotated.head.json call minitator#macros()
-```
-
-* For Vim plug:
-```vim
-" My Librecode helpers
-Plug 'targetdisk/minitator'
-au BufRead,BufNewFile *.annotated.head.json call minitator#macros()
-```
-
-### Step 2: Install the plugin
-Run the `:VundleInstall` command or the `:PlugInstall` command (for Vundle or
-Vim Plug, respectively).
-
-### Step 3: PROFIT!
-There is no step three!!!
+3. Install the Minitator plugin in your favorite editor:
+  - For Vim/Neovim users: see [this guide](VimHOWTO.md).
