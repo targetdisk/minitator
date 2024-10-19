@@ -1,5 +1,10 @@
 PLAYER_SRC ?= modules/asciinema-player
 
+HOWTOS := $(wildcard *HOWTO.md)
+HOWTO_HTMLS := $(HOWTOS:.md=.html)
+DOC_HOWTOS := $(foreach HOWTO,$(HOWTOS),docs/$(HOWTO))
+DOC_HOWTO_HTMLS := $(DOC_HOWTOS:.md=.html)
+
 UNAME := $(shell uname)
 ifeq ($(UNAME),Darwin)
 	OPEN=open
@@ -38,11 +43,12 @@ player: asciinema-player.css asciinema-player.min.js
 
 clean:
 	git submodule deinit -f $(PLAYER_SRC)
-	rm -fr asciinema-player.css asciinema-player.min.js README.html HACKING.html
+	rm -fr asciinema-player.css asciinema-player.min.js README.html \
+		HACKING.html *HOWTO.html docs
 
-.PHONY: player clean README HACKING
+.PHONY: player clean README HACKING alldocs
 
-### README #####################################################################
+### DOCS ################ Require Pandoc to be installed ############## DOCS ###
 
 pandoc.css:
 	wget https://sqt.wtf/~targetdisk/pandoc.css
@@ -65,3 +71,15 @@ HACKING: HACKING.html
 
 %HOWTO: %HOWTO.html
 	$(OPEN) $<
+
+docs: pandoc.css
+	mkdir -p $@
+	cp $< $@/
+
+docs/%.md: %.md docs
+	sed 's/\.md)/.html)/g'< $< > $@
+
+docs/%.html: docs/%.md docs
+	pandoc $< -s -c pandoc.css -o $@
+
+alldocs: docs/README.html docs/HACKING.html $(DOC_HOWTO_HTMLS)
