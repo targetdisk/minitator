@@ -195,3 +195,42 @@ player:
 ```
 /^\[SECONDS
 ```
+
+Find the first input (`"i"` after the timestamp in the `[]`) where the user
+starts typing the command that you want to annotate.  Note the timestamp, and
+convert it from seconds to milliseconds by **truncating** it to the nearest
+millisecond (move the decimal point to the right three places and discard
+everything after the decimal place):
+
+<table>
+    <thead>
+        <th scope="col">Annotation in your editor buffer</th>
+        <th scope="col">Asciinema buffer</th>
+    </thead>
+    <tbody>
+<td>
+```json
+{
+    "beginning": 2329,
+    "end": ,
+    "text": ""
+}
+```
+</td>
+<td>
+```
+{"version": 2, "width": ... }
+[0.016466, "o", "stonkbad:minitator anon$ "]
+[2.329086, "i", "e"]
+[2.329252, "o", "e"]
+[2.649085, "i", "c"]
+[2.649257, "o", "c"]
+[2.809009, "i", "h"]
+[2.809164, "o", "h"]
+[2.976932, "i", "o"]
+[2.977057, "o", "o"]
+...
+```
+</td>
+</tbody>
+</table>
