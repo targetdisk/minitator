@@ -40,7 +40,7 @@ There is one additional keyboard shortcut included with Minitator:
 
 | Key | Description | Function |
 | --- | ----------- | -------- |
-| `Any` | Any key mapped by the [core Asciinema keyboard shortcuts](https://docs.asciinema.org/manual/player/shortcuts/) | Refreshes timestamp table |
+| `Any` | Any key not mapped by the [core Asciinema keyboard shortcuts](https://docs.asciinema.org/manual/player/shortcuts/) | Refreshes timestamp table |
 
 --------------------------
 
