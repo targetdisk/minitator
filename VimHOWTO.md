@@ -234,3 +234,59 @@ everything after the decimal place):
 </td>
 </tbody>
 </table>
+
+For the `end` timestamp, you want the time immediately after the shell is handed
+back to the user.  The easiest way to do this is to just to round the
+timestamp of the next shell prompt's "output" up to the next millisecond:
+
+<table>
+    <thead>
+        <th scope="col">Annotation in your editor buffer</th>
+        <th scope="col">Asciinema buffer</th>
+    </thead>
+    <tbody>
+<td>
+```json
+{
+    "beginning": 2329,
+    "end": 5058,
+    "text": ""
+}
+```
+</td>
+<td>
+```
+...
+[5.057055, "i", "\r"]
+[5.057205, "o", "\r\n"]
+[5.057243, "o", "\u001b[?2004l\rhello\r\n"]
+[5.057361, "o", "stonkbad:minitator anon$ "]
+...
+```
+</td>
+</tbody>
+</table>
+
+Fill in the `text` field according to the
+[annotation procedures document](Annotation-Procedures-indev.md).  Be sure to
+escape newlines as `\n` and quotes as `\"`.  For instance, if the user typed
+`echo hello` and the shell returned `hello`, you might annotate it like so:
+
+```json
+{
+    "beginning": 2329,
+    "end": 5058,
+    "text": "Goal: Print \"hello\" to the terminal.\nTool: The \"echo\" shell builtin.\nResult: successResult"
+}
+```
+
+This would store the following as `text`:
+```
+Goal: Print the string "hello" to the terminal.
+Tool: The "echo" shell builtin.
+Result: successResult
+```
+
+> <h4>NOTE:</h4>
+> In the near future, Minitator's Vim plugin will include an easier to use
+> `text` editor that won't require escaping things for JSON!
