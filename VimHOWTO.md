@@ -290,3 +290,235 @@ Result: successResult
 > <h4>NOTE:</h4>
 > In the near future, Minitator's Vim plugin will include an easier to use
 > `text` editor that won't require escaping things for JSON!
+
+### 3: Adding Timeline Layers
+Over the course of annotating, you'll often encounter sessions within sessions,
+subtools used by tools, or secrets (see the
+[annotation procedures document](Annotation-Procedures-indev.md) for more on
+this).  These necessitate additional timeline layers.  For instance, if the
+session invokes SSH and runs commands interactively in the remote shell, you'll
+want to use another timeline.  You can accomplish this simply with the `@l`
+macro:
+
+<table>
+    <thead>
+        <th scope="col">Before</th>
+        <th scope="col">After</th>
+    </thead>
+    <tbody>
+<td>
+```json
+{
+   "env" : {
+      "SHELL" : "/bin/bash",
+      "TERM" : "xterm"
+   },
+   "height" : 92,
+   "librecode_annotations" : {
+       "note": "librecode annotations",
+       "version": 1,
+       "layers": [
+           {
+               "annotations": [
+                   {
+                       "beginning": 1954,
+                       "end": 14284448,
+                       "text": "Goal: Log into..."
+                   }
+               ]
+           } 🔛
+       ]
+   },
+   "timestamp" : 1727116219,
+   "version" : 2,
+   "width" : 319
+}
+```
+</td>
+<td>
+```json
+{
+   "env" : {
+      "SHELL" : "/bin/bash",
+      "TERM" : "xterm"
+   },
+   "height" : 92,
+   "librecode_annotations" : {
+       "note": "librecode annotations",
+       "version": 1,
+       "layers": [
+           {
+               "annotations": [
+                   {
+                       "beginning": 1954,
+                       "end": 14284448,
+                       "text": "Goal: Log into..."
+                   }
+               ]
+           },
+           {
+               "annotations": [
+               ]
+           }
+       ]
+   },
+   "timestamp" : 1727116219,
+   "version" : 2,
+   "width" : 319
+}
+```
+</td>
+</tbody>
+</table>
+
+To help distinguish between layers in your annotation, you can give them
+`title`s with the `@t` macro:
+
+<table>
+    <thead>
+        <th scope="col">Before</th>
+        <th scope="col">After</th>
+    </thead>
+    <tbody>
+<td>
+```json
+{
+   "env" : {
+      "SHELL" : "/bin/bash",
+      "TERM" : "xterm"
+   },
+   "height" : 92,
+   "librecode_annotations" : {
+       "note": "librecode annotations",
+       "version": 1,
+       "layers": [
+           {
+               "annotations": [
+                   {
+                       "beginning": 1954,
+                       "end": 14284448,
+                       "text": "Goal: Log into..."
+                   }
+               ] 🔛
+           },
+           {
+               "annotations": [
+                   {
+                       "beginning": 18475,
+                       "end": 123377,
+                       "text": "Goal: Update..."
+                   }
+               ] 🔛
+           }
+       ]
+   },
+   "timestamp" : 1727116219,
+   "version" : 2,
+   "width" : 319
+}
+```
+</td>
+<td>
+```json
+{
+   "env" : {
+      "SHELL" : "/bin/bash",
+      "TERM" : "xterm"
+   },
+   "height" : 92,
+   "librecode_annotations" : {
+       "note": "librecode annotations",
+       "version": 1,
+       "layers": [
+           {
+               "annotations": [
+                   {
+                       "beginning": 1954,
+                       "end": 14284448,
+                       "text": "Goal: Log into..."
+                   }
+               ],
+               "title": "Recording system shell"
+           },
+           {
+               "annotations": [
+                   {
+                       "beginning": 18475,
+                       "end": 123377,
+                       "text": "Goal: Update..."
+                   }
+               ],
+               "title": "demo@10.0.7.138 shell"
+           }
+       ]
+   },
+   "timestamp" : 1727116219,
+   "version" : 2,
+   "width" : 319
+}
+```
+</td>
+</tbody>
+</table>
+
+### 4: Making your second annotation
+You can use the `@s` macro to add subsequent macros after the first without
+having to type the comma after the first annotation's `{}` block:
+<table>
+    <thead>
+        <th scope="col">Before</th>
+        <th scope="col">After</th>
+    </thead>
+    <tbody>
+<td>
+```json
+...
+       "layers": [
+           {
+               "annotations": [
+                   {
+                       "beginning": 1954,
+                       "end": 14284448,
+                       "text": "Goal: Log into..."
+                   } 🔛
+               ],
+               "title": "Recording system shell"
+           },
+...
+```
+</td>
+<td>
+```json
+...
+       "layers": [
+           {
+               "annotations": [
+                   {
+                       "beginning": 1954,
+                       "end": 14284448,
+                       "text": "Goal: Log into..."
+                   },
+                   {
+                       "beginning": ,
+                       "end": ,
+                       "text": ""
+                   }
+               ],
+               "title": "Recording system shell"
+           },
+...
+```
+</td>
+</tbody>
+</table>
+
+### 5: Conjoining your annotations to the Asciinema input
+Once you're finished writing your annotations, you'll need to combine your
+annotated JSON metadata with the original Asciinema input to form one final
+annotated output file.  You do this by calling `minitator#conjoin()`:
+```
+:call minitator#conjoin()
+```
+
+The final combined output will open in a `vsplit` buffer for final review.  If
+it looks good, send it in and move on to annotating the next shell session!
