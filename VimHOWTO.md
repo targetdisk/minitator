@@ -41,7 +41,7 @@ au BufRead,BufNewFile *.annotated.head.json call minitator#macros()
 
 ### Step 2: Install the plugin
 Run the `:VundleInstall`, `:PlugInstall` commands or the `:Lazy` command (for
-Vundle, Vim Plug, or Lazy respectively).
+Vundle, Vim Plug, or Lazy, respectively).
 
 ## USING
 ### A word on macros
