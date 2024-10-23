@@ -9,7 +9,7 @@ then perusing [this guide on window management in Vim](https://jitesh117.github.
 
 ## INSTALLING
 ### Step 1: Register plugin in your vimrc
-Add the following lines to your `~/.vimrc`:
+Add the following lines to your `~/.vimrc` or into your Neovim configuration:
 
 * For Vundle:
 ```vim
@@ -25,9 +25,23 @@ Plug 'targetdisk/minitator'
 au BufRead,BufNewFile *.annotated.head.json call minitator#macros()
 ```
 
+* For Lazy (Neovim-Only):
+```lua
+{
+    -- My Librecode helpers
+    'targetdisk/minitator',
+    config = function ()
+        vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+                pattern = {"*.annotated.head.json"},
+                command = "call minitator#macros()",
+                })
+    end
+},
+```
+
 ### Step 2: Install the plugin
-Run the `:VundleInstall` command or the `:PlugInstall` command (for Vundle or
-Vim Plug, respectively).
+Run the `:VundleInstall`, `:PlugInstall` commands or the `:Lazy` command (for
+Vundle, Vim Plug, or Lazy, respectively).
 
 ## USING
 ### A word on macros
