@@ -46,4 +46,8 @@ function! minitator#macros()
   let @t = 'A,"title": ""€ý5'
   let @a = 'o{"beginning": ,"end": ,"text": ""}€ý5'
   let @s = 'A,{"beginning": ,"end": ,"text": ""}€ý5'
+  let @r = 'aTool: The \"sudo\" command is used to elevate privileges.\n'
+  let @g = 'aResult: successResult'
+  let @f = 'aResult: successFailure'
+  let @u = 'aResult: successUnknown'
 endfunction

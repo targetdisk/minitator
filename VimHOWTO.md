@@ -301,6 +301,40 @@ Tool: The "echo" shell builtin.
 Result: successResult
 ```
 
+There are a few helper macros that can help you fill out the text field more
+quickly:
+
+<table>
+    <thead>
+        <th scope="col">Macro</th>
+        <th scope="col">Purpose</th>
+    </thead>
+    <tbody>
+<tr>
+<td> `@r` </td>
+<td>
+Add the text `Tool: The \"sudo\" command is used to elevate privileges.\n`
+immediately after the cursor.
+</td>
+</tr>
+
+<tr>
+<td> `@g` </td>
+<td> Add the text `Result: successResult` immediately after the cursor. </td>
+</tr>
+
+<tr>
+<td> `@f` </td>
+<td> Add the text `Result: successFailure` immediately after the cursor. </td>
+</tr>
+
+<tr>
+<td> `@u` </td>
+<td> Add the text `Result: successUnknown` immediately after the cursor. </td>
+</tr>
+</tbody>
+</table>
+
 > <h4>NOTE:</h4>
 > In the near future, Minitator's Vim plugin will include an easier to use
 > `text` editor that won't require escaping things for JSON!
